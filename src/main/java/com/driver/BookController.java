@@ -52,6 +52,11 @@ public class BookController {
 
     // get request /get-book-by-id/{id}
     // pass id as path variable
+    @GetMapping("/get-book-by-id/{id}")
+    public ResponseEntity<Book> getBookbyId(@PathVariable int id){
+    	Book b=new Book();
+    	return new ResponseEntity<>(b,HttpStatus.ACCEPTED);
+    }
     // getBookById()
 
     // delete request /delete-book-by-id/{id}
