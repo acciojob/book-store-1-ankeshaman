@@ -3,6 +3,7 @@ package com.driver;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("books")
 public class BookController {
+	@Autowired
+	Service service;
 
     private List<Book> bookList;
     private int id;
@@ -54,7 +57,7 @@ public class BookController {
     // pass id as path variable
     @GetMapping("/get-book-by-id/{id}")
     public ResponseEntity<Book> getBookbyId(@PathVariable int id){
-    	Book b=new Book();
+    	Book b=service.getBookbyId(id);
     	return new ResponseEntity<>(b,HttpStatus.ACCEPTED);
     }
     // getBookById()
